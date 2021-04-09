@@ -66,27 +66,26 @@ public class MainActivity extends AppCompatActivity {
                      */
 
                     for(Element e : contents) {
-                        Log.e("if 들어가기전", "1");
+                        // 데이터가 있는지 없는지 체크할 때 방법 2가지
+                        // 방법1 : isEmpty() 함수 사용하기
                         if(!e.select("ul.list_nav.type_fix").isEmpty()) {
-//                            Log.e("첫번째if", "2");
-//                            cafeName += e.select("li:nth-child(1) > a").text();
                             for(int i=1;i<=7;i++) {
-                                Log.e("첫번째if에 for문 안", "2");
-                                cafeName += e.select("li:nth-child("+i+") > a").text();
-                            }
-//                            Log.e("첫번째if에 for문 끝나고", "4");
-//                            cafeName += e.select("li:nth-child(7) > a > i").text();
-                        } else if(!e.select("ul.list_nav.NM_FAVORITE_LIST").isEmpty()) {
-                            Log.e("두번째if", "3");
-                            for(int i=1;i<=9;i++) {
-                                Log.e("두번째if에 for문 안", "4");
-                                cafeName += e.select("li:nth-child("+i+") > a").text();
+                                cafeName += e.select("ul.list_nav.type_fix > li:nth-child("+i+") > a").text();
+                                /*
+                                    cafeName += e.select("li:nth-child("+i+") > a").text(); 라고 해버리면
+                                    밑에 if 문을 통해 가져올 데이터의 css도 동일하기 때문에 순서가 뒤죽박죽 되어버림.
+                                */
+
                             }
                         }
-                        Log.e("if 다 끝나고", "5");
+                        // 방법2 : size() 함수 사용하기
+                        if(!(e.select("ul.list_nav.NM_FAVORITE_LIST").size() == 0)) {
+                            for(int i=1;i<=9;i++) {
+                                cafeName += e.select("ul.list_nav.NM_FAVORITE_LIST > li:nth-child("+i+") > a").text();
+                            }
+                        }
                     }
 
-                    Log.e("다끝남", "6");
 
                     bundle.putString("cafe", cafeName);
                     Message msg = handler.obtainMessage();
