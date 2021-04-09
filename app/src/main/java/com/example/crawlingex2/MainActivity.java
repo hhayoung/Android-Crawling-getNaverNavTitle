@@ -70,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
                         // 방법1 : isEmpty() 함수 사용하기
                         if(!e.select("ul.list_nav.type_fix").isEmpty()) {
                             for(int i=1;i<=7;i++) {
-                                cafeName += e.select("ul.list_nav.type_fix > li:nth-child("+i+") > a").text();
+                                cafeName += e.select("ul.list_nav.type_fix > li:nth-child("+i+") > a").text() + "\n";
                                 /*
                                     cafeName += e.select("li:nth-child("+i+") > a").text(); 라고 해버리면
-                                    밑에 if 문을 통해 가져올 데이터의 css도 동일하기 때문에 순서가 뒤죽박죽 되어버림.
+                                    밑에 있는 if 문을 통해 가져올 데이터의 css selector 도 동일하기 때문에
+                                    밑에 있는 if 문의 데이터를 먼저 가져와서 순서가 뒤죽박죽 되어버림.
                                 */
 
                             }
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         // 방법2 : size() 함수 사용하기
                         if(!(e.select("ul.list_nav.NM_FAVORITE_LIST").size() == 0)) {
                             for(int i=1;i<=9;i++) {
-                                cafeName += e.select("ul.list_nav.NM_FAVORITE_LIST > li:nth-child("+i+") > a").text();
+                                cafeName += e.select("ul.list_nav.NM_FAVORITE_LIST > li:nth-child("+i+") > a").text() + "\n";
                             }
                         }
                     }
