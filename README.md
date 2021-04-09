@@ -16,4 +16,4 @@ AndroidManifest.xml 파일
 
 
 ### 결과 화면
-<img src="" width="450px" height="300px" alt="result"></img><br/>
+<img src="https://user-images.githubusercontent.com/76401721/114157584-bfdf7380-995e-11eb-8404-24d9dd4fc0f4.PNG">
